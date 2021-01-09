@@ -2,8 +2,8 @@
 
 module.exports = function (app) {
   
-  app.route('/api/threads/:board');
+  app.use('/api/threads', require('./threads'));
     
-  app.route('/api/replies/:board');
+  app.use('/api/replies', require('./replies'));
 
 };

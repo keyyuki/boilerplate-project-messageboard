@@ -3,12 +3,18 @@ require('dotenv').config();
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const cors        = require('cors');
+const helmet = require('helmet')
+
+require("./loader")()
 
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
 
 const app = express();
+app.use(helmet.frameguard({action: 'sameorigin'}));
+app.use(helmet.dnsPrefetchControl({allow: false,}));
+app.use(helmet.referrerPolicy({policy: 'sameorigin',}));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
@@ -31,6 +37,7 @@ app.route('/b/:board/:threadid')
 app.route('/')
   .get(function (req, res) {
     res.sendFile(process.cwd() + '/views/index.html');
+    
   });
 
 //For FCC testing purposes
