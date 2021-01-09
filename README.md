@@ -1,2 +1,1 @@
-# boilerplate-project-messageboard
-A boilerplate for a freeCodeCamp project.
+# [Anonymous Message Board](https://www.freecodecamp.org/learn/information-security/information-security-projects/anonymous-message-board)
